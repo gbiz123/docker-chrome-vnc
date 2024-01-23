@@ -1,11 +1,12 @@
-# Easily launch ephemeral headed Chrome instances
+# Run headed chrome in docker for Playwright automation and privacy
 Launch headed Chrome in a Docker container, start a VNC server, and get the remote debugging websocket endpoint back.
 This program solves the problem of not being able to run Playwright in headless=false mode from a Docker container.
+Additionally, these browser instances are completely ephemeral and therefore ideal for private browsing.
 
 By using this, you agree to Google Chrome terms: https://www.google.com/chrome/terms/
 
-## Install
-Simply clone and build the docker image.
+## Install and build the Docker image
+Simply clone and build the docker iage.
 ```bash
 git clone https://github.com/gbiz123/docker-chrome-vnc/
 cd docker-chrome-vnc
@@ -13,7 +14,7 @@ docker build -t chrome-gui .
 chmod +x run-chrome-gui.sh
 ```
 
-## Launch
+## Launch 
 Run the script to get the container ID and the websocket URL. The websocket URL can be used for Playwright automation over Chrome CDP.
 ```bash
 ./run-chrome-gui.sh 9222 5900 # Specify port for remote debugging
