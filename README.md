@@ -1,5 +1,5 @@
 # Headed chrome in docker for automation and privacy
-Launch headed Chrome in a Docker container, start a VNC server, and get the remote debugging websocket endpoint back.
+Launch headed Chrome in a Docker container running VNC, and get the remote debugging websocket endpoint back.
 This program solves the problem of not being able to run Playwright in headless=false mode from a Docker container.
 Additionally, these browser instances are completely ephemeral and therefore ideal for private browsing.
 
