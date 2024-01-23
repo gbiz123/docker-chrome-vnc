@@ -1,5 +1,6 @@
 # Easily launch ephemeral headed Chrome instances
 Launch headed Chrome in a Docker container, start a VNC server, and get the remote debugging websocket endpoint back.
+Designed for privacy and automation.
 By using this, you agree to Google Chrome terms: https://www.google.com/chrome/terms/
 
 ## Install
