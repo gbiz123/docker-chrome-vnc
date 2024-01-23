@@ -14,7 +14,7 @@ chmod +x run-chrome-gui.sh
 ## Launch
 ```bash
 ./run-chrome-gui.sh 9222 5900 # Specify port for remote debugging
->>> ws://localhost:9222/devtools/browser/39700af5-80cb-41ae-8929-f39f9ca1ccd9
+>>> {"containerId":de66831e80a5c0c6645e8240276549ea40ca18a30e816a100c5c28c4e139bfe3,"wsEndpoint":ws://localhost:9222/devtools/browser/8c6ff95f-f609-49eb-b701-d46b3e0e1c89}
 ```
 
 ## Connect VNC

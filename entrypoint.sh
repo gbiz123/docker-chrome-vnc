@@ -1,11 +1,20 @@
 #!/bin/bash
 
 Xvfb $DISPLAY -ac -listen tcp -screen 0 1920x1080x16 &
-sleep 3
+while ! pgrep "Xvfb" > /dev/null; do
+    sleep .1
+done
+
 /usr/bin/fluxbox -display $DISPLAY -screen 0 &
-sleep 3
+while ! pgrep "fluxbox" > /dev/null; do
+    sleep .1
+done
+
 x11vnc -display $DISPLAY -forever -passwd $VNC_PASSWORD &
-sleep 5
+while ! pgrep "x11vnc" > /dev/null; do
+    sleep .1
+done
+
 google-chrome --no-sandbox \
 	--disable-dev-shm-usage \
 	--disable-gpu \
