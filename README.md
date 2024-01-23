@@ -26,3 +26,7 @@ Use any VNC client to visualize and interact with the browser.
 ```bash
 vncviewer localhost:5900
 ```
+
+## TO-DO
+- [] Parameterize Xvfb display options to produce unique, yet reproducible canvas fingerprints
+- [] Convert the run-chrome-gui.sh script to .bat file for Windows compatibility
