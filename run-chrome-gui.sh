@@ -1,3 +1,4 @@
+#!/bin/bash
 DEBUG_PORT=$1
 VNC_PORT=$2
 
