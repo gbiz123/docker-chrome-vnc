@@ -27,7 +27,7 @@ containerId=$(docker run \
 	-e VNC_PASSWORD=$VNC_PASSWORD \
 	-e VNC_PORT=$VNC_PORT \
 	--network host \
-	chrome-gui)
+	chrome-gui-hyperaccs)
 
 if [ -z $containerId ]; then
 	echo "Could not get containerId";
@@ -48,4 +48,4 @@ if [ -z $wsEndpoint ]; then
 	exit 1;
 fi;
 
-echo "{\"containerId\":$containerId,\"wsEndpoint\":$wsEndpoint}"
+echo "{\"containerId\":\"$containerId\",\"wsEndpoint\":\"$wsEndpoint\"}"
