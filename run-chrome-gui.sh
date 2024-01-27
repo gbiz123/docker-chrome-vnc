@@ -13,21 +13,16 @@ if [ -z $VNC_PORT ]; then
 fi;
 
 
-VNC_PASSWORD=hyperaccs
-
 xhost + > /dev/null
 
 # Launch the container detached on X server
-# -v /tmp/.X11-unix:/tmp/.X11-unix \
-# -e DISPLAY=$DISPLAY \
 containerId=$(docker run \
 	--rm \
 	--detach \
 	-it \
 	-e DEBUG_PORT=$DEBUG_PORT \
-	-e VNC_PASSWORD=$VNC_PASSWORD \
 	-e VNC_PORT=$VNC_PORT \
-	--network host \
+	--network=host \
 	chrome-gui-hyperaccs)
 
 if [ -z $containerId ]; then

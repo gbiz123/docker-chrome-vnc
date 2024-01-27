@@ -10,7 +10,7 @@ while ! pgrep "fluxbox" > /dev/null; do
     sleep .1
 done
 
-x11vnc -display $DISPLAY -forever -passwd $VNC_PASSWORD &
+x11vnc -display $DISPLAY -rfbport $VNC_PORT -forever -passwd $VNC_PASSWORD &
 while ! pgrep "x11vnc" > /dev/null; do
     sleep .1
 done
@@ -19,4 +19,5 @@ google-chrome --no-sandbox \
 	--disable-dev-shm-usage \
 	--disable-gpu \
 	--remote-debugging-port=$DEBUG_PORT \
+	--remote-debugging-address=$0.0.0.0 \
 	--no-default-browser-check
