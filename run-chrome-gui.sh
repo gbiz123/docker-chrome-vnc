@@ -1,27 +1,37 @@
 #!/bin/bash
 DEBUG_PORT=$1
 VNC_PORT=$2
+DISPLAY=$3
 
 if [ -z $DEBUG_PORT ]; then
-	echo "Debug port and VNC port must be passed as positional args and cannot be null";
+	echo "Debug port must be passed as first positional argument (e.g. 9222)"
 	exit 1;
 fi;
 
 if [ -z $VNC_PORT ]; then
-	echo "Debug port and VNC port must be passed as positional args and cannot be null";
+	echo "VNC port must be passed as second positional argument (e.g. 5900)"
 	exit 1;
 fi;
 
+if [ -z $DISPLAY ]; then
+	echo "Display var must be passed as third positional argument (e.g. :99)"
+	exit 1;
+fi;
 
-xhost + > /dev/null
+# Check if DISPLAY is already in use to avoid multiple vnc servers on a single display (that would be bad)
+xvfbProcessCount=$(ps -ef | grep -c "Xvfb $DISPLAY")
+if [ "$xvfbProcessCount" -ge 2 ]; then
+	echo "There is already an Xvfb process running on display $DISPLAY. Choose a different value for the display positional argument."
+	exit 1;
+fi;
 
-# Launch the container detached on X server
 containerId=$(docker run \
 	--rm \
 	--detach \
 	-it \
 	-e DEBUG_PORT=$DEBUG_PORT \
 	-e VNC_PORT=$VNC_PORT \
+	-e DISPLAY=$DISPLAY \
 	--network=host \
 	chrome-gui-hyperaccs)
 
